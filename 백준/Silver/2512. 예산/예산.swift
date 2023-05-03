@@ -1,3 +1,4 @@
+
 let n = Int(readLine()!)!
 var numberArr = readLine()!.split(separator: " ").map { Int(String($0))! }
 let max = Int(readLine()!)!
@@ -21,9 +22,9 @@ func checking() -> Bool{
 
 while left <= right {
     if checking(){
-        left = left + 1
+        left = mid + 1
     }else{
-        right = right - 1
+        right = mid - 1
     }
     mid = (left + right) / 2
     
