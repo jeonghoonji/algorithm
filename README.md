@@ -1,2 +1,12 @@
-# algorithm
-This is a auto push repository for Baekjoon Online Judge created with [BaekjoonHub](https://github.com/BaekjoonHub/BaekjoonHub).
+# 알고리즘 문제 풀이
+
+**이 레포지토리는 코딩테스트를 준비하기 위해 만든 공간입니다.👍**
+<br>
+**여기에는 다양한 알고리즘 문제들의 풀이 코드와 관련된 자료들을 정리하고 있습니다. 📚**
+
+
+## 문제 해석 🔎
+**블로그** [[링크](https://gigajeonghoon.tistory.com/category/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0%20%26%20%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98)] 
+
+<br>
+버그 수정, 추가적인 문제 풀이, 문제 풀이에 대한 개선 제안 등 어떤 형태의 연락은 환영합니다. 😃 
