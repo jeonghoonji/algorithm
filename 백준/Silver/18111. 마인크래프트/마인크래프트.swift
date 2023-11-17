@@ -1,57 +1,59 @@
-let NMB = readLine()!.split(separator: " ").map { Int(String($0))! }
-let N = NMB[0]
-let M = NMB[1]
-let B = NMB[2]
-var ground = Array(repeating: [Int](), count: N)
-var highest = 0
-var lowest = 256
-var answer = Array(repeating: 0, count: 2)
+let input = readLine()!.split(separator: " ").map{ Int(String($0))!}
+let N = input[0]
+let M = input[1]
+var B = input[2]
 
-for i in 0..<N {
-    ground[i] = readLine()!.split(separator: " ").map { Int(String($0))! }
-}
+var ground: [[Int]] = Array(repeating: Array(repeating: 0, count: M), count: N)
 
-for i in 0..<N {
-    for j in 0..<M {
-        if ground[i][j] <= lowest {
-            lowest = ground[i][j]
+var maxHeight: Int = 0
+var minHeight: Int = 256
+
+var result: [Int] = Array(repeating: 0, count: 2)
+
+for i in 0..<N{
+    let input = readLine()!.split(separator: " ").map{ Int(String($0))!}
+    for j in 0..<M{
+        ground[i][j] = input[j]
+        if maxHeight <= input[j]{
+            maxHeight = input[j]
         }
-        if ground[i][j] >= highest {
-            highest = ground[i][j]
+        if minHeight >= input[j]{
+            minHeight = input[j]
         }
     }
 }
 
-for i in stride(from: highest, through: lowest, by: -1) {
-    var tmpTime = 0
-    var item = B
-    for j in 0..<N {
-        for k in 0..<M {
-            if ground[j][k] < i {
-                item -= (i - ground[j][k])
-                tmpTime += (i - ground[j][k])
-            } else if ground[j][k] > i {
-                item += (ground[j][k] - i)
-                tmpTime += (ground[j][k] - i) * 2
-            } else {
-                continue
+
+for i in stride(from: maxHeight, through: minHeight, by: -1){
+    var time: Int = 0
+    var tempB = B
+    
+    for j in 0..<ground.count{
+        for k in 0..<ground[j].count{
+            if ground[j][k] < i{
+                tempB -= (i - ground[j][k])
+                time += (i - ground[j][k])
+            }else{
+                tempB += (ground[j][k] - i)
+                time += (ground[j][k] - i) * 2
             }
         }
     }
-    if item < 0 {
+    if tempB < 0{
         continue
     }
-    if answer[0] == 0 {
-        answer[0] = tmpTime
-        answer[1] = i
-    } else {
-        if answer[0] > tmpTime {
-            answer[0] = tmpTime
-            answer[1] = i
-        } else if answer[0] == tmpTime {
-            answer[1] = max(answer[1], i)
+    
+    if result[0] == 0{
+        result[0] = time
+        result[1] = i
+    }else{
+        if result[0] > time{
+            result[0] = time
+            result[1] = i
+        }else if result[0] == time{
+            result[1] = max(result[1],i)
         }
     }
 }
 
-print(answer[0], answer[1])
+print(result[0],result[1])
